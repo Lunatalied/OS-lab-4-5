@@ -32,8 +32,6 @@
 #include "IEcoInterfaceBus1MemExt.h"
 #include "IdEcoIPCCMailbox1.h"
 #include "IdEcoVFB1.h"
-#include "IdEcoMutex1Lab.h"
-#include "IdEcoSemaphore1Lab.h"
 
 /*
 #include "IEcoCGI1.h"
@@ -44,11 +42,6 @@
 /* Начало свободного участка памяти */
 extern char_t __heap_start__;
 
-/* Указатель на интерфейс для работы c мьютекс */
-IEcoMutex1* g_pIMutex = 0;
-/* Указатель на интерфейс для работы c семафор */
-IEcoSemaphore1* g_pISemaphore = 0;
-
 /* Указатель на интерфейсы */
 IEcoVFB1* g_pIVFB = 0;
 IEcoSystemTimer1* g_pISysTimer = 0;
@@ -56,8 +49,6 @@ IEcoSystemTimer1* g_pISysTimer = 0;
 char_t g_strTask[2] = {0};
 
 void TimerHandler(void) {
-    g_pIMutex->pVTbl->Lock(g_pIMutex);
-    //g_pISemaphore->pVTbl->Wait(g_pISemaphore, 0);
     if (g_strTask[0] == '\\') {
         g_strTask[0] = '|';
     }
@@ -70,8 +61,6 @@ void TimerHandler(void) {
     else  {
         g_strTask[0] = '\\';
     }
-    g_pIMutex->pVTbl->UnLock(g_pIMutex);
-    //g_pISemaphore->pVTbl->Post(g_pISemaphore);
 }
 
 void printProgress() {
@@ -92,7 +81,7 @@ void printProgress() {
 
 void Task1() {
     uint64_t currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
-    uint64_t endTime = currentTime +  5000000ul;
+    uint64_t endTime = currentTime +  15000000ul;
     uint64_t changeTime = currentTime;
     g_pIVFB->pVTbl->WriteString(g_pIVFB, 0, 0, 0, 0, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, "1", 1);
     while ( endTime >= currentTime) {
@@ -120,7 +109,7 @@ void Task2() {
 
 void Task3() {
     uint64_t currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
-    uint64_t endTime = currentTime +  5000000ul;
+    uint64_t endTime = currentTime +  1000000ul;
     uint64_t changeTime = currentTime;
     g_pIVFB->pVTbl->WriteString(g_pIVFB, 0, 0, 0, 0, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, "3", 1);
     while ( endTime >= currentTime) {
@@ -193,7 +182,7 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
 
     /* Регистрация статического компонента для работы с памятью */
     result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoMemoryManager1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_0000000000000000000000004D656D31);
-    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoMemoryManager1Lab, (IEcoUnknown*)GetIEcoComponentFactoryPtr_81589BFED0B84B1194524BEE623E1838);
+    //result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoMemoryManager1Lab, (IEcoUnknown*)GetIEcoComponentFactoryPtr_81589BFED0B84B1194524BEE623E1838);
     /* Проверка */
     if (result != 0) {
         /* Освобождение в случае ошибки */
@@ -212,15 +201,15 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     result = pIBus->pVTbl->QueryInterface(pIBus, &IID_IEcoInterfaceBus1MemExt, (void**)&pIMemExt);
     if (result == 0 && pIMemExt != 0) {
         /* Установка расширения менаджера памяти */
-        //pIMemExt->pVTbl->set_Manager(pIMemExt, &CID_EcoMemoryManager1);
-        pIMemExt->pVTbl->set_Manager(pIMemExt, &CID_EcoMemoryManager1Lab);
+        pIMemExt->pVTbl->set_Manager(pIMemExt, &CID_EcoMemoryManager1);
+      //  pIMemExt->pVTbl->set_Manager(pIMemExt, &CID_EcoMemoryManager1Lab);
         /* Установка разрешения расширения пула */
         pIMemExt->pVTbl->set_ExpandPool(pIMemExt, 1);
     }
 
     /* Получение интерфейса управления памятью */
-    //pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoMemoryManager1, 0, &IID_IEcoMemoryManager1, (void**) &pIMemMgr);
-    pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoMemoryManager1Lab, 0, &IID_IEcoMemoryManager1, (void**) &pIMemMgr);
+    pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoMemoryManager1, 0, &IID_IEcoMemoryManager1, (void**) &pIMemMgr);
+    //pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoMemoryManager1Lab, 0, &IID_IEcoMemoryManager1, (void**) &pIMemMgr);
     if (result != 0 || pIMemMgr == 0) {
         /* Возврат в случае ошибки */
         return result;
@@ -230,12 +219,12 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     pIMemMgr->pVTbl->Init(pIMemMgr, &__heap_start__, 0x080000);
 
     /* Получение интерфейса для работы с виртуальной памятью */
-    result = pIMemMgr->pVTbl->QueryInterface(pIMemMgr, &IID_IEcoVirtualMemory1, (void**)&pIVrtMem);
-    if (result == 0 && pIVrtMem != 0) {
+    //result = pIMemMgr->pVTbl->QueryInterface(pIMemMgr, &IID_IEcoVirtualMemory1, (void**)&pIVrtMem);
+    //if (result == 0 && pIVrtMem != 0) {
         /* Инициализация виртуальной памяти */
-        result = pIVrtMem->pVTbl->Init(pIVrtMem);
+     //   result = pIVrtMem->pVTbl->Init(pIVrtMem);
         /* TO DO */
-    }
+   // }
     /* Регистрация статического компонента для работы с планировщиком */
     result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoTaskScheduler1Lab, (IEcoUnknown*)GetIEcoComponentFactoryPtr_902ABA722D34417BB714322CC761620F);
     /* Проверка */
@@ -260,22 +249,6 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
         goto Release;
     }
 
-    /* Регистрация статического компонента для работы с мьютекс */
-    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoMutex1Lab, (IEcoUnknown*)GetIEcoComponentFactoryPtr_2F48BBCBE4884CC08ECFC45990017215);
-    /* Проверка */
-    if (result != 0) {
-        /* Освобождение в случае ошибки */
-        goto Release;
-    }
-
-    /* Регистрация статического компонента для работы с семафор */
-    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoSemaphore1Lab, (IEcoUnknown*)GetIEcoComponentFactoryPtr_0741985B8FD0476C867CAE177CD26E7C);
-    /* Проверка */
-    if (result != 0) {
-        /* Освобождение в случае ошибки */
-        goto Release;
-    }
-
     /* Получение интерфейса для работы с планировщиком */
     result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoTaskScheduler1Lab, 0, &IID_IEcoTaskScheduler1, (void**) &pIScheduler);
     /* Проверка */
@@ -291,23 +264,9 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     pIScheduler->pVTbl->NewTask(pIScheduler, Task1, 0, 0x100, &pITask1);
     pIScheduler->pVTbl->NewTask(pIScheduler, Task2, 0, 0x100, &pITask2);
     pIScheduler->pVTbl->NewTask(pIScheduler, Task3, 0, 0x100, &pITask3);
-
-    /* Получение интерфейса для работы с мьютекс */
-    result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoMutex1Lab, 0, &IID_IEcoMutex1, (void**) &g_pIMutex);
-    /* Проверка */
-    if (result != 0 || g_pIMutex == 0) {
-        /* Освобождение в случае ошибки */
-        goto Release;
-    }
-
-    /* Получение интерфейса для работы с семафор */
-    result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoSemaphore1Lab, 0, &IID_IEcoSemaphore1, (void**) &g_pISemaphore);
-    /* Проверка */
-    if (result != 0 || g_pISemaphore == 0) {
-        /* Освобождение в случае ошибки */
-        goto Release;
-    }
-
+	
+	pIScheduler->Qi(IIDPPror, &pPr);
+	pPr->setPr(pITask1->getId(), 10);
     /* Получение интерфейса для работы с системным таймером */
     result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoTimer1, 0, &IID_IEcoSystemTimer1, (void**) &pISysTimer);
     /* Проверка */

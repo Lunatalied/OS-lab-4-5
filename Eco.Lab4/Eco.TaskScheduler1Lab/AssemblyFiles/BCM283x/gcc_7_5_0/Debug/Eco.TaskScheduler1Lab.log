@@ -1,0 +1,12 @@
+﻿Build started 5/28/2023 11:36:27 PM.
+     1>Project "D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\AssemblyFiles\BCM283x\gcc_7_5_0\Eco.TaskScheduler1Lab.vcxproj" on node 2 (build target(s)).
+     1>PrepareForBuild:
+         Creating directory "obj\Win32\Debug\".
+       Build:
+         make
+         D:\lab4_materials\toolchain/gcc-linaro-7.5.0/bin/aarch64-elf-ar -rcs ..\\..\\..\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease\\lib902ABA722D34417BB714322CC761620F.a ..\\..\\..\\SourceFiles\\CEcoTask1Lab.o ..\\..\\..\\SourceFiles\\CEcoTaskScheduler1Lab.o ..\\..\\..\\SourceFiles\\CEcoTaskScheduler1LabFactory.o
+     1>Done Building Project "D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\AssemblyFiles\BCM283x\gcc_7_5_0\Eco.TaskScheduler1Lab.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.30

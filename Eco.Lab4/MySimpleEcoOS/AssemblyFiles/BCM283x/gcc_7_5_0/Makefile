@@ -13,8 +13,6 @@ endif
 INCLUDES = \
 -I ..$(SLASH)..$(SLASH)..$(SLASH)HeaderFiles \
 -I ..$(SLASH)..$(SLASH)..$(SLASH)SharedFiles \
--I $(ECO_PRO_TRAINING)$(SLASH)004.EcoOS$(SLASH)Lessons$(SLASH)Lesson07$(SLASH)Eco.Mutex1Lab$(SLASH)SharedFiles \
--I $(ECO_PRO_TRAINING)$(SLASH)004.EcoOS$(SLASH)Lessons$(SLASH)Lesson07$(SLASH)Eco.Semaphore1Lab$(SLASH)SharedFiles \
 -I $(ECO_PRO_TRAINING)$(SLASH)004.EcoOS$(SLASH)Lessons$(SLASH)Lesson08$(SLASH)Eco.TaskScheduler1Lab$(SLASH)SharedFiles \
 -I $(ECO_PRO_TRAINING)$(SLASH)004.EcoOS$(SLASH)Lessons$(SLASH)Lesson09$(SLASH)Eco.MemoryManager1Lab$(SLASH)SharedFiles \
 -I $(ECO_FRAMEWORK)$(SLASH)Eco.IPCC.Mailbox1$(SLASH)SharedFiles \
@@ -27,12 +25,12 @@ INCLUDES = \
 -I $(ECO_FRAMEWORK)$(SLASH)Eco.TaskScheduler1$(SLASH)SharedFiles \
 -I $(ECO_FRAMEWORK)$(SLASH)Eco.MemoryManager1$(SLASH)SharedFiles \
 -I $(ECO_FRAMEWORK)$(SLASH)Eco.FileSystemManagement1$(SLASH)SharedFiles \
--I $(ECO_FRAMEWORK)$(SLASH)Eco.String1$(SLASH)SharedFiles
+-I $(ECO_FRAMEWORK)$(SLASH)Eco.String1$(SLASH)SharedFiles \
+-I D:\OS-lab-4-5\Eco.Lab4\Eco.MemoryManager1Lab\SharedFiles \
+-I D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\SharedFiles
 
 LIB = \
 -L ..$(SLASH)..$(SLASH)..$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
--L $(ECO_PRO_TRAINING)$(SLASH)004.EcoOS$(SLASH)Lessons$(SLASH)Lesson07$(SLASH)Eco.Mutex1Lab$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
--L $(ECO_PRO_TRAINING)$(SLASH)004.EcoOS$(SLASH)Lessons$(SLASH)Lesson07$(SLASH)Eco.Semaphore1Lab$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
 -L $(ECO_PRO_TRAINING)$(SLASH)004.EcoOS$(SLASH)Lessons$(SLASH)Lesson08$(SLASH)Eco.TaskScheduler1Lab$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
 -L $(ECO_PRO_TRAINING)$(SLASH)004.EcoOS$(SLASH)Lessons$(SLASH)Lesson09$(SLASH)Eco.MemoryManager1Lab$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
 -L $(ECO_FRAMEWORK)$(SLASH)Eco.IPCC.Mailbox1$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
@@ -43,19 +41,21 @@ LIB = \
 -L $(ECO_FRAMEWORK)$(SLASH)Eco.TaskScheduler1$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
 -L $(ECO_FRAMEWORK)$(SLASH)Eco.FileSystemManagement1$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
 -L $(ECO_FRAMEWORK)$(SLASH)Eco.MemoryManager1$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
--L $(ECO_FRAMEWORK)$(SLASH)Eco.String1$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease
+-L $(ECO_FRAMEWORK)$(SLASH)Eco.String1$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
+-L D:\OS-lab-4-5\Eco.Lab4\Eco.MemoryManager1Lab\BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
+-L D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease
 
 Pi3-64: CFLAGS = -Wall -std=gnu89 -Wno-missing-braces -march=armv8-a+simd -mtune=cortex-a53 -mstrict-align -fno-tree-loop-vectorize -fno-tree-slp-vectorize -DECO_LIB -DECO_BCM283X -DUGUID_UTILITY $(INCLUDES)
 Pi3-64: IMGFILE = kernel8.img
 #Pi3-64: ARMGNU  = $(ECO_TOOLCHAIN)$(SLASH)gcc-linaro-7.5.0$(SLASH)bin$(SLASH)
-Pi3-64: ARMGNU  = C:$(SLASH)toolchain$(SLASH)gcc-linaro-7.5.0$(SLASH)bin$(SLASH)
+Pi3-64: ARMGNU  = D:\lab4_materials\toolchain\gcc-linaro-7.5.0$(SLASH)bin$(SLASH)
 Pi3-64: LINKERFILE = startup.ld
 Pi3-64: PISTART = ..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)entry.S
 
 
 LDFLAGS = -nostartfiles -ffreestanding -fno-asynchronous-unwind-tables -fomit-frame-pointer 
 
-LIBFLAGS=-static $(LIB) -l0000000000000000000000004D656D31 -lF10BC39A4F2143CF8A1E104650A2C302 -l84CC0A7DBABD44EEBE749C9A8312D37E -l902ABA722D34417BB714322CC761620F -l8DB93F3DF5B947D4A67F7C100B569723 -l939B1DCDB6404F7D9C072291AF252188 -l00000000000000000000000042757331 -l81589BFED0B84B1194524BEE623E1838 -l2F48BBCBE4884CC08ECFC45990017215 -l0741985B8FD0476C867CAE177CD26E7C -lc -lm -lgcc 
+LIBFLAGS=-static $(LIB) -l0000000000000000000000004D656D31 -lF10BC39A4F2143CF8A1E104650A2C302 -l84CC0A7DBABD44EEBE749C9A8312D37E -l902ABA722D34417BB714322CC761620F -l8DB93F3DF5B947D4A67F7C100B569723 -l939B1DCDB6404F7D9C072291AF252188 -l00000000000000000000000042757331 -l81589BFED0B84B1194524BEE623E1838 -lc -lm -lgcc 
 
 LINKERFLAGS=-Wl,-Map,kernel.map
 ASMFLAGS=-nostartfiles -ffreestanding -fno-asynchronous-unwind-tables -fomit-frame-pointer -Wa,-a>list.txt"

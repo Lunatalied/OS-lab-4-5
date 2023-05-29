@@ -39,6 +39,8 @@ uint64_t * volatile g_pxCurrentTCB_C761620F = 0;
 
 uint64_t g_indx = 0;
 
+extern IEcoVFB1* g_pIVFB;
+
 /*
  *
  * <сводка>
@@ -310,7 +312,7 @@ int16_t ECOCALLMETHOD CEcoTaskScheduler1Lab_C761620F_NewTask(/*in*/ IEcoTaskSche
     }
 
     /* Проверяем указатель пула статических задач */
-    for (indx = 0; indx < 3; indx++) {
+    for (indx = 0; indx < MAX_STATIC_TASK_COUNT; indx++) {
         if (g_xCEcoTask1List_C761620F[indx].pfunc == 0) {
             g_xCEcoTask1List_C761620F[indx].pfunc = address;
             g_xCEcoTask1List_C761620F[indx].m_cRef = 1;

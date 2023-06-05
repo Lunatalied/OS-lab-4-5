@@ -39,7 +39,7 @@ uint64_t * volatile g_pxCurrentTCB_C761620F = 0;
 
 uint64_t g_indx = 0;
 
-extern IEcoVFB1* g_pIVFB;
+// extern IEcoVFB1* g_pIVFB;
 
 /*
  *

@@ -55,6 +55,15 @@ typedef struct IEcoTask1VTbl {
      * </описание>
      */
     int16_t (ECOCALLMETHOD *Yield)(/*in*/ IEcoTask1Ptr_t me);
+    
+    uint16_t (ECOCALLMETHOD *SetId)(IEcoTask1Ptr_t me, uint16_t id);
+	uint16_t (ECOCALLMETHOD *GetId)(IEcoTask1Ptr_t me);
+
+    uint16_t (ECOCALLMETHOD *SetPriority)(IEcoTask1Ptr_t me, uint16_t priority);
+	uint16_t (ECOCALLMETHOD *GetPriority)(IEcoTask1Ptr_t me);
+
+    uint16_t (ECOCALLMETHOD *SetDeadline)(IEcoTask1Ptr_t me, uint16_t deadline);
+	uint16_t (ECOCALLMETHOD *GetDeadline)(IEcoTask1Ptr_t me);
 
 } IEcoTask1VTbl, *IEcoTask1VTblPtr;
 

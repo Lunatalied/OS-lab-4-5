@@ -26,6 +26,7 @@
 #include "IEcoTaskScheduler1.h"
 #include "IdEcoTaskScheduler1Lab.h"
 #include "IdEcoTimer1.h"
+#include "IEcoTaskPriority1.h"
 #include "IEcoSystemTimer1.h"
 #include "IdEcoInterfaceBus1.h"
 #include "IdEcoFileSystemManagement1.h"
@@ -145,6 +146,7 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     IEcoVirtualMemory1* pIVrtMem = 0;
     /* Указатель на интерфейс для работы с планировщиком */
     IEcoTaskScheduler1* pIScheduler = 0;
+	IEcoTaskPriority1* pIPriority = 0;
     IEcoTask1* pITask1 = 0;
     IEcoTask1* pITask2 = 0;
     IEcoTask1* pITask3 = 0;
@@ -264,9 +266,20 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     pIScheduler->pVTbl->NewTask(pIScheduler, Task1, 0, 0x100, &pITask1);
     pIScheduler->pVTbl->NewTask(pIScheduler, Task2, 0, 0x100, &pITask2);
     pIScheduler->pVTbl->NewTask(pIScheduler, Task3, 0, 0x100, &pITask3);
-	
-	pIScheduler->Qi(IIDPPror, &pPr);
-	pPr->setPr(pITask1->getId(), 10);
+    
+    pITask1->pVTbl->SetId(pITask1, 1);
+    pITask1->pVTbl->SetId(pITask2, 2);
+    pITask1->pVTbl->SetId(pITask3, 3);
+    
+    pITask1->pVTbl->SetPriority(pITask1, 1);
+    pITask1->pVTbl->SetPriority(pITask2, 2);
+    pITask1->pVTbl->SetPriority(pITask3, 3);
+    
+    pITask1->pVTbl->SetDeadline(pITask1, 1);
+    pITask1->pVTbl->SetDeadline(pITask2, 2);
+    pITask1->pVTbl->SetDeadline(pITask3, 3);
+
+    // pIPriority->pVTbl->setPr(pITask1->pVTbl->getId(pITask1), 10);
     /* Получение интерфейса для работы с системным таймером */
     result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoTimer1, 0, &IID_IEcoSystemTimer1, (void**) &pISysTimer);
     /* Проверка */

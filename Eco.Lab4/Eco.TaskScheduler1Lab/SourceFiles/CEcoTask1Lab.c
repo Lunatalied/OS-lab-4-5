@@ -150,6 +150,66 @@ int16_t ECOCALLMETHOD CEcoTask1Lab_C761620F_Yield(/*in*/ IEcoTask1Ptr_t me) {
     return 0;
 }
 
+uint16_t ECOCALLMETHOD CEcoTask1Lab_C761620F_SetId(IEcoTask1Ptr_t me, uint16_t id) {
+    CEcoTask1Lab_C761620F* pCMe = (CEcoTask1Lab_C761620F*)me;
+    if (me == 0 ) {
+        return -1;
+    }
+
+    pCMe->id = id;
+    return 0;
+}
+
+
+uint16_t ECOCALLMETHOD CEcoTask1Lab_C761620F_GetId(IEcoTask1Ptr_t me) {
+    CEcoTask1Lab_C761620F* pCMe = (CEcoTask1Lab_C761620F*)me;
+    if (me == 0 ) {
+        return -1;
+    }
+
+    return pCMe->id;
+}
+
+uint16_t ECOCALLMETHOD CEcoTask1Lab_C761620F_SetPriority(IEcoTask1Ptr_t me, uint16_t priority) {
+    CEcoTask1Lab_C761620F* pCMe = (CEcoTask1Lab_C761620F*)me;
+    if (me == 0 ) {
+        return -1;
+    }
+
+    pCMe->priority = priority;
+    return 0;
+}
+
+
+uint16_t ECOCALLMETHOD CEcoTask1Lab_C761620F_GetPriority(IEcoTask1Ptr_t me) {
+    CEcoTask1Lab_C761620F* pCMe = (CEcoTask1Lab_C761620F*)me;
+    if (me == 0 ) {
+        return -1;
+    }
+
+    return pCMe->priority;
+}
+
+uint16_t ECOCALLMETHOD CEcoTask1Lab_C761620F_SetDeadline(IEcoTask1Ptr_t me, uint16_t deadline) {
+    CEcoTask1Lab_C761620F* pCMe = (CEcoTask1Lab_C761620F*)me;
+    if (me == 0 ) {
+        return -1;
+    }
+
+    pCMe->deadline = deadline;
+    return 0;
+}
+
+
+uint16_t ECOCALLMETHOD CEcoTask1Lab_C761620F_GetDeadline(IEcoTask1Ptr_t me) {
+    CEcoTask1Lab_C761620F* pCMe = (CEcoTask1Lab_C761620F*)me;
+    if (me == 0 ) {
+        return -1;
+    }
+
+    return pCMe->deadline;
+}
+
 
 /* Create Virtual Table IEcoTask1 */
 IEcoTask1VTbl g_x81A466F4C27540B1B33D0661E5470F1BVTbl_C761620F = {
@@ -157,6 +217,12 @@ IEcoTask1VTbl g_x81A466F4C27540B1B33D0661E5470F1BVTbl_C761620F = {
     CEcoTask1Lab_C761620F_AddRef,
     CEcoTask1Lab_C761620F_Release,
     CEcoTask1Lab_C761620F_Delay,
-    CEcoTask1Lab_C761620F_Yield
+    CEcoTask1Lab_C761620F_Yield,
+    CEcoTask1Lab_C761620F_SetId,
+    CEcoTask1Lab_C761620F_GetId,
+    CEcoTask1Lab_C761620F_SetPriority,
+    CEcoTask1Lab_C761620F_GetPriority,
+    CEcoTask1Lab_C761620F_SetDeadline,
+	CEcoTask1Lab_C761620F_GetDeadline
 };
 

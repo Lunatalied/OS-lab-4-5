@@ -1,17 +1,64 @@
-﻿Build started 6/5/2023 10:42:44 PM.
+﻿Build started 6/20/2023 10:25:31 PM.
      1>Project "D:\OS-lab-4-5\Eco.Lab4\MySimpleEcoOS\AssemblyFiles\BCM283x\gcc_7_5_0\MySimpleEcoOS.vcxproj" on node 2 (build target(s)).
      1>Build:
          make
-         D:\lab4_materials\toolchain\gcc-linaro-7.5.0\\bin\\aarch64-elf-gcc -Wall -std=gnu89 -Wno-missing-braces -march=armv8-a+simd -mtune=cortex-a53 -mstrict-align -fno-tree-loop-vectorize -fno-tree-slp-vectorize -DECO_LIB -DECO_BCM283X -DUGUID_UTILITY -I ..\\..\\..\\HeaderFiles -I ..\\..\\..\\SharedFiles -I \\004.EcoOS\\Lessons\\Lesson08\\Eco.TaskScheduler1Lab\\SharedFiles -I \\004.EcoOS\\Lessons\\Lesson09\\Eco.MemoryManager1Lab\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.IPCC.Mailbox1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.CGI1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.VFB1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.Core1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.InterfaceBus1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.Timer1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.InterruptController1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.TaskScheduler1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.MemoryManager1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.FileSystemManagement1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.String1\\SharedFiles -I D:\OS-lab-4-5\Eco.Lab4\Eco.MemoryManager1Lab\SharedFiles -I D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\SharedFiles -nostartfiles -ffreestanding -fno-asynchronous-unwind-tables -fomit-frame-pointer  -Wl,-Map,kernel.map -Wl,-T,startup.ld   -o kernel.elf ..\\..\\..\\SourceFiles\\MySimpleEcoOS.c ..\\..\\..\\SourceFiles\\entry.S -static -L ..\\..\\..\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L \\004.EcoOS\\Lessons\\Lesson08\\Eco.TaskScheduler1Lab\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L \\004.EcoOS\\Lessons\\Lesson09\\Eco.MemoryManager1Lab\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.IPCC.Mailbox1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.VFB1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.Timer1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.InterruptController1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.InterfaceBus1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.TaskScheduler1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.FileSystemManagement1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.MemoryManager1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.String1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\OS-lab-4-5\Eco.Lab4\Eco.MemoryManager1Lab\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -l0000000000000000000000004D656D31 -lF10BC39A4F2143CF8A1E104650A2C302 -l84CC0A7DBABD44EEBE749C9A8312D37E -l902ABA722D34417BB714322CC761620F -l8DB93F3DF5B947D4A67F7C100B569723 -l939B1DCDB6404F7D9C072291AF252188 -l00000000000000000000000042757331 -l81589BFED0B84B1194524BEE623E1838 -lc -lm -lgcc  
+         D:\lab4_materials\toolchain\gcc-linaro-7.5.0\\bin\\aarch64-elf-gcc -Wall -std=gnu89 -Wno-missing-braces -march=armv8-a+simd -mtune=cortex-a53 -mstrict-align -fno-tree-loop-vectorize -fno-tree-slp-vectorize -DECO_LIB -DECO_BCM283X -DUGUID_UTILITY -I ..\\..\\..\\HeaderFiles -I ..\\..\\..\\SharedFiles -I \\004.EcoOS\\Lessons\\Lesson08\\Eco.TaskScheduler1Lab\\SharedFiles -I \\004.EcoOS\\Lessons\\Lesson09\\Eco.MemoryManager1Lab\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.IPCC.Mailbox1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.CGI1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.VFB1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.Core1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.InterfaceBus1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.Timer1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.InterruptController1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.TaskScheduler1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.MemoryManager1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.FileSystemManagement1\\SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.String1\\SharedFiles -I D:\OS-lab-4-5\Eco.Lab4\Eco.MemoryManager1Lab\SharedFiles -I D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\SharedFiles -I D:\OS-lab-4-5\Eco.Lab4\BubleSort\SharedFiles -nostartfiles -ffreestanding -fno-asynchronous-unwind-tables -fomit-frame-pointer  -Wl,-Map,kernel.map -Wl,-T,startup.ld   -o kernel.elf ..\\..\\..\\SourceFiles\\MySimpleEcoOS.c ..\\..\\..\\SourceFiles\\entry.S -static -L ..\\..\\..\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L \\004.EcoOS\\Lessons\\Lesson08\\Eco.TaskScheduler1Lab\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L \\004.EcoOS\\Lessons\\Lesson09\\Eco.MemoryManager1Lab\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.IPCC.Mailbox1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.VFB1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.Timer1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.InterruptController1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.InterfaceBus1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.TaskScheduler1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.FileSystemManagement1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.MemoryManager1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\lab4_materials\Eco.Framework_20230409\Eco.Framework\\Eco.String1\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\OS-lab-4-5\Eco.Lab4\Eco.MemoryManager1Lab\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease -L D:\OS-lab-4-5\Eco.Lab4\BubleSort\BuildFiles\\Windows(SLASH)x86(SLASH)StaticDebug -l0000000000000000000000004D656D31 -lF10BC39A4F2143CF8A1E104650A2C302 -l84CC0A7DBABD44EEBE749C9A8312D37E -l902ABA722D34417BB714322CC761620F -l8DB93F3DF5B947D4A67F7C100B569723 -l939B1DCDB6404F7D9C072291AF252188 -l00000000000000000000000042757331 -l81589BFED0B84B1194524BEE623E1838 -lc -lm -lgcc  
+         In file included from D:\OS-lab-4-5\Eco.Lab4\BubleSort\SharedFiles/IdBubleSort.h:28:0,
+                          from ..\..\..\SourceFiles\MySimpleEcoOS.c:36:
+         D:\OS-lab-4-5\Eco.Lab4\BubleSort\SharedFiles/IBubleSort.h:37:61: warning: 'struct IBubleSort' declared inside parameter list will not be visible outside of this definition or declaration
+              int16_t (ECOCALLMETHOD *QueryInterface)(/* in */ struct IBubleSort* me, /* in */ const UGUID* riid, /* out */ void **ppv);
+                                                                      ^~~~~~~~~~
+         D:\OS-lab-4-5\Eco.Lab4\BubleSort\SharedFiles/IBubleSort.h:38:54: warning: 'struct IBubleSort' declared inside parameter list will not be visible outside of this definition or declaration
+              uint32_t (ECOCALLMETHOD *AddRef)(/* in */ struct IBubleSort* me);
+                                                               ^~~~~~~~~~
+         D:\OS-lab-4-5\Eco.Lab4\BubleSort\SharedFiles/IBubleSort.h:39:55: warning: 'struct IBubleSort' declared inside parameter list will not be visible outside of this definition or declaration
+              uint32_t (ECOCALLMETHOD *Release)(/* in */ struct IBubleSort* me);
+                                                                ^~~~~~~~~~
+         D:\OS-lab-4-5\Eco.Lab4\BubleSort\SharedFiles/IBubleSort.h:42:54: warning: 'struct IBubleSort' declared inside parameter list will not be visible outside of this definition or declaration
+              void (ECOCALLMETHOD *MyFunction)(/* in */ struct IBubleSort* me, void * first, size_t size, size_t sizeType, int (ECOCDECLMETHOD * comparator ) (const void * , const void * ));
+                                                               ^~~~~~~~~~
+         D:\OS-lab-4-5\Eco.Lab4\BubleSort\SharedFiles/IBubleSort.h:47:40: warning: 'struct IEcoLab1' declared inside parameter list will not be visible outside of this definition or declaration
+              void (ECOCALLMETHOD *qsort)(struct IEcoLab1 *me, void *base, size_t num, size_t size, int (ECOCDECLMETHOD *compare)(const void *, const void *));
+                                                 ^~~~~~~~
+         ..\..\..\SourceFiles\MySimpleEcoOS.c: In function 'Task1':
+         ..\..\..\SourceFiles\MySimpleEcoOS.c:117:17: warning: unused variable 'pIBubleSort' [-Wunused-variable]
+              IBubleSort* pIBubleSort = 0;
+                          ^~~~~~~~~~~
+         ..\..\..\SourceFiles\MySimpleEcoOS.c:113:10: warning: unused variable 'size' [-Wunused-variable]
+           int16_t size = 30;
+                   ^~~~
+         ..\..\..\SourceFiles\MySimpleEcoOS.c:112:10: warning: unused variable 'arr_int' [-Wunused-variable]
+           int16_t arr_int[30] = {99, -2, 76, 96, -68, 36, -26, -21, 34, 52, 59, 85, 6, 75, -70, -92, -77, 70, -65, -3, 53, 100, 94, 84, -53, -95, 89, -20, -31, -10};
+                   ^~~~~~~
+         ..\..\..\SourceFiles\MySimpleEcoOS.c: In function 'Task2':
+         ..\..\..\SourceFiles\MySimpleEcoOS.c:136:17: warning: unused variable 'pIBubleSort' [-Wunused-variable]
+              IBubleSort* pIBubleSort = 0;
+                          ^~~~~~~~~~~
+         ..\..\..\SourceFiles\MySimpleEcoOS.c:132:10: warning: unused variable 'size' [-Wunused-variable]
+           int16_t size = 30;
+                   ^~~~
+         ..\..\..\SourceFiles\MySimpleEcoOS.c:131:11: warning: unused variable 'arr_double' [-Wunused-variable]
+           double_t arr_double[30] = {23.3083,70.2118,62.8812,16.4437,83.6103,48.9525,90.3603,70.3762,32.91,82.8918,81.0752,27.7077,97.2646,66.1746,80.7059,96.3442,93.0083,53.4421,28.3258,5.9416,70.6301,94.3844,50.879,90.7564,68.1696,28.374,69.9686,7.4785,35.6852,50.1796};
+                    ^~~~~~~~~~
+         ..\..\..\SourceFiles\MySimpleEcoOS.c: In function 'Task3':
+         ..\..\..\SourceFiles\MySimpleEcoOS.c:154:17: warning: unused variable 'pIBubleSort' [-Wunused-variable]
+              IBubleSort* pIBubleSort = 0;
+                          ^~~~~~~~~~~
+         ..\..\..\SourceFiles\MySimpleEcoOS.c:150:10: warning: unused variable 'size' [-Wunused-variable]
+           int16_t size = 30;
+                   ^~~~
+         ..\..\..\SourceFiles\MySimpleEcoOS.c:149:9: warning: unused variable 'arr_char' [-Wunused-variable]
+           char_t arr_char[30] = {'J','S','B','9','b','C','Z','c','Z','K','W','D','f','m','U','3','5','a','e','c','Q','q','Y','t','d','7','p','j','g','f'};
+                  ^~~~~~~~
          ..\..\..\SourceFiles\MySimpleEcoOS.c: In function 'EcoMain':
-         ..\..\..\SourceFiles\MySimpleEcoOS.c:300:45: warning: passing argument 2 of 'pITimer->pVTbl->set_IrqHandler' from incompatible pointer type [-Wincompatible-pointer-types]
+         ..\..\..\SourceFiles\MySimpleEcoOS.c:341:45: warning: passing argument 2 of 'pITimer->pVTbl->set_IrqHandler' from incompatible pointer type [-Wincompatible-pointer-types]
               pITimer->pVTbl->set_IrqHandler(pITimer, TimerHandler);
                                                       ^~~~~~~~~~~~
-         ..\..\..\SourceFiles\MySimpleEcoOS.c:300:45: note: expected 'void **' but argument is of type 'void (*)(void)'
-         ..\..\..\SourceFiles\MySimpleEcoOS.c:149:21: warning: unused variable 'pIPriority' [-Wunused-variable]
+         ..\..\..\SourceFiles\MySimpleEcoOS.c:341:45: note: expected 'void **' but argument is of type 'void (*)(void)'
+         ..\..\..\SourceFiles\MySimpleEcoOS.c:190:21: warning: unused variable 'pIPriority' [-Wunused-variable]
            IEcoTaskPriority1* pIPriority = 0;
                               ^~~~~~~~~~
-         ..\..\..\SourceFiles\MySimpleEcoOS.c:146:25: warning: unused variable 'pIVrtMem' [-Wunused-variable]
+         ..\..\..\SourceFiles\MySimpleEcoOS.c:187:25: warning: unused variable 'pIVrtMem' [-Wunused-variable]
               IEcoVirtualMemory1* pIVrtMem = 0;
                                   ^~~~~~~~
      1>d:/lab4_materials/toolchain/gcc-linaro-7.5.0/bin/../lib/gcc/aarch64-elf/7.5.0/../../../../aarch64-elf/bin/ld.exe : warning : .note.gnu.build-id section discarded, --build-id ignored.
@@ -22,4 +69,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.36
+Time Elapsed 00:00:01.18

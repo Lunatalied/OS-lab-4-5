@@ -27,7 +27,7 @@
 CEcoTaskScheduler1Lab_C761620F g_xCEcoTaskScheduler1Lab_C761620F = {0};
 
 /* Резервируем область под статические задачи */
-#define MAX_STATIC_TASK_COUNT   3
+#define MAX_STATIC_TASK_COUNT   10
 CEcoTask1Lab_C761620F g_xCEcoTask1List_C761620F[MAX_STATIC_TASK_COUNT] = {0};
 
 /* Резервируем область под стеки статических задач */
@@ -40,6 +40,7 @@ uint64_t * volatile g_pxCurrentTCB_C761620F = 0;
 uint64_t g_indx = 0;
 
 // extern IEcoVFB1* g_pIVFB;
+extern IEcoTask1VTbl g_x81A466F4C27540B1B33D0661E5470F1BVTbl_C761620F;
 
 /*
  *
@@ -323,6 +324,7 @@ int16_t ECOCALLMETHOD CEcoTaskScheduler1Lab_C761620F_NewTask(/*in*/ IEcoTaskSche
                 reg--;
             }
             *pxTopOfStack = (uint64_t)g_xCEcoTask1List_C761620F[indx].pfunc;
+            g_xCEcoTask1List_C761620F[indx].m_pVTblITask = &g_x81A466F4C27540B1B33D0661E5470F1BVTbl_C761620F;
             *ppITask = (IEcoTask1*)&g_xCEcoTask1List_C761620F[indx];
             return 0;
             break;
@@ -455,31 +457,74 @@ int16_t ECOCALLMETHOD CEcoTaskScheduler1Lab_C761620F_UnRegisterInterrupt(/*in*/ 
 int16_t ECOCALLMETHOD CEcoTaskScheduler1Lab_C761620F_Start(/*in*/ IEcoTaskScheduler1Ptr_t me) {
     CEcoTaskScheduler1Lab_C761620F* pCMe = (CEcoTaskScheduler1Lab_C761620F*)me;
 
+    int16_t remaining_time[MAX_STATIC_TASK_COUNT] = {0};
+    int16_t i, j, max_urgency_task;
+    int16_t num_tasks = 0;
+
     /* Проверка указателей */
     if (me == 0 ) {
         return -1;
     }
 
+    
+
     /* Запускаем таймер */
     //pCMe->m_pIArmTimer->pVTbl->Start(pCMe->m_pIArmTimer);
-    g_pxCurrentTCB_C761620F = (uint64_t*)&pCMe->m_pTaskList[0];
+    //g_pxCurrentTCB_C761620F = (uint64_t*)&pCMe->m_pTaskList[0];
 
-    /* Передаем управление задаче */
     while (1) {
-        if (g_pxCurrentTCB_C761620F == (uint64_t*)&pCMe->m_pTaskList[g_indx] && pCMe->m_pTaskList[g_indx].pfunc != 0) {
-            pCMe->m_pTaskList[g_indx].pfunc();
-            g_indx++;
-            if (g_indx >= MAX_STATIC_TASK_COUNT) {
-                g_indx = 0;
+    for (i = 0; pCMe->m_pTaskList[i].pfunc != 0; i++) {
+        remaining_time[i] =  pCMe->m_pTaskList[i].m_pVTblITask->GetDeadline((uint64_t*)&pCMe->m_pTaskList[i]);
+        num_tasks++;
+    }
+    /* Передаем управление задаче */
+    //while (1) {
+    //    if (g_pxCurrentTCB_C761620F == (uint64_t*)&pCMe->m_pTaskList[g_indx] && pCMe->m_pTaskList[g_indx].pfunc != 0) {
+    //        pCMe->m_pTaskList[g_indx].pfunc();
+    //        g_indx++;
+    //        if (g_indx >= MAX_STATIC_TASK_COUNT) {
+    //            g_indx = 0;
+    //        }
+    //        else if (pCMe->m_pTaskList[g_indx].pfunc == 0) {
+    //            g_indx = 0;
+    //        }
+    //        g_pxCurrentTCB_C761620F = (uint64_t*)&pCMe->m_pTaskList[g_indx];
+    //    }
+    //    else {
+    //        asm volatile ("NOP\n\t" ::: "memory");
+    //    }
+    //}
+
+    for (i = 0; i < num_tasks; i++) {
+        max_urgency_task = -1;
+        for (j = 0; j < num_tasks; j++) {
+            if (remaining_time[j] > 0 && (max_urgency_task == -1 || remaining_time[j] < remaining_time[max_urgency_task])) {
+                max_urgency_task = j;
             }
-            else if (pCMe->m_pTaskList[g_indx].pfunc == 0) {
-                g_indx = 0;
-            }
-            g_pxCurrentTCB_C761620F = (uint64_t*)&pCMe->m_pTaskList[g_indx];
         }
-        else {
-            asm volatile ("NOP\n\t" ::: "memory");
+        if (max_urgency_task == -1) {
+            break;
         }
+        g_indx = max_urgency_task;
+        if (g_indx >= MAX_STATIC_TASK_COUNT) {
+            g_indx = 0;
+        }
+        else if (pCMe->m_pTaskList[g_indx].pfunc == 0) {
+            g_indx = 0;
+        }
+
+        g_pxCurrentTCB_C761620F = (uint64_t*)&pCMe->m_pTaskList[max_urgency_task];
+        pCMe->m_pTaskList[max_urgency_task].pfunc();
+        //g_indx++;
+        //if (g_indx >= MAX_STATIC_TASK_COUNT) {
+        //    g_indx = 0;
+        //}
+        //else if (pCMe->m_pTaskList[g_indx].pfunc == 0) {
+        //    g_indx = 0;
+        //}
+
+        remaining_time[g_indx] = 0;
+    }
     }
     return 0;
 }

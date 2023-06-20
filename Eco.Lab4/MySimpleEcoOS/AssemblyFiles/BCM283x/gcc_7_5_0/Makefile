@@ -27,7 +27,8 @@ INCLUDES = \
 -I $(ECO_FRAMEWORK)$(SLASH)Eco.FileSystemManagement1$(SLASH)SharedFiles \
 -I $(ECO_FRAMEWORK)$(SLASH)Eco.String1$(SLASH)SharedFiles \
 -I D:\OS-lab-4-5\Eco.Lab4\Eco.MemoryManager1Lab\SharedFiles \
--I D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\SharedFiles
+-I D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\SharedFiles \
+-I D:\OS-lab-4-5\Eco.Lab4\BubleSort\SharedFiles
 
 LIB = \
 -L ..$(SLASH)..$(SLASH)..$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
@@ -43,7 +44,8 @@ LIB = \
 -L $(ECO_FRAMEWORK)$(SLASH)Eco.MemoryManager1$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
 -L $(ECO_FRAMEWORK)$(SLASH)Eco.String1$(SLASH)BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
 -L D:\OS-lab-4-5\Eco.Lab4\Eco.MemoryManager1Lab\BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
--L D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease
+-L D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\BuildFiles$(SLASH)BCM283x$(SLASH)arm64-v8a$(SLASH)StaticRelease \
+-L D:\OS-lab-4-5\Eco.Lab4\BubleSort\BuildFiles$(SLASH)Windows(SLASH)x86(SLASH)StaticDebug
 
 Pi3-64: CFLAGS = -Wall -std=gnu89 -Wno-missing-braces -march=armv8-a+simd -mtune=cortex-a53 -mstrict-align -fno-tree-loop-vectorize -fno-tree-slp-vectorize -DECO_LIB -DECO_BCM283X -DUGUID_UTILITY $(INCLUDES)
 Pi3-64: IMGFILE = kernel8.img

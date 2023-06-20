@@ -33,6 +33,7 @@
 #include "IEcoInterfaceBus1MemExt.h"
 #include "IdEcoIPCCMailbox1.h"
 #include "IdEcoVFB1.h"
+#include "IdBubleSort.h"
 
 /*
 #include "IEcoCGI1.h"
@@ -80,10 +81,42 @@ void printProgress() {
     g_pIVFB->pVTbl->WriteString(g_pIVFB, 0, 0, 1, 0, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, g_strTask, 1);
 }
 
+int ECOCDECLMETHOD comparatori(const void * a, const void * b) { 
+	int16_t data1 = *(int16_t *)a; 
+	int16_t data2 = *(int16_t *)b;
+    if (data1 > data2)
+		return 1;
+	else
+		return 0;
+}
+
+int ECOCDECLMETHOD comparatord(const void * a, const void * b) { 
+    double_t data1 = *(double_t *)a; 
+	double_t data2 = *(double_t *)b;
+    if (data1 > data2)
+		return 1;
+	else
+		return 0;
+}
+
+int ECOCDECLMETHOD comparatorc(const void * a, const void * b) { 
+    char data1 = *(char *)a; 
+	char data2 = *(char *)b;
+    if (data1 > data2)
+		return 1;
+	else
+		return 0;
+}
+
 void Task1() {
-    uint64_t currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
-    uint64_t endTime = currentTime +  15000000ul;
+	int16_t arr_int[30] = {99, -2, 76, 96, -68, 36, -26, -21, 34, 52, 59, 85, 6, 75, -70, -92, -77, 70, -65, -3, 53, 100, 94, 84, -53, -95, 89, -20, -31, -10};
+	int16_t size = 30;
+	uint64_t currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
+    uint64_t endTime = currentTime +  5000000ul;
     uint64_t changeTime = currentTime;
+    IBubleSort* pIBubleSort = 0;
+	
+	//pIBubleSort->pVTbl->MyFunction(pIBubleSort, arr_int, size, sizeof(int16_t), comparatori);
     g_pIVFB->pVTbl->WriteString(g_pIVFB, 0, 0, 0, 0, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, "1", 1);
     while ( endTime >= currentTime) {
         if (changeTime >= currentTime) {
@@ -95,9 +128,13 @@ void Task1() {
 }
 
 void Task2() {
-    uint64_t currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
+	double_t arr_double[30] = {23.3083,70.2118,62.8812,16.4437,83.6103,48.9525,90.3603,70.3762,32.91,82.8918,81.0752,27.7077,97.2646,66.1746,80.7059,96.3442,93.0083,53.4421,28.3258,5.9416,70.6301,94.3844,50.879,90.7564,68.1696,28.374,69.9686,7.4785,35.6852,50.1796};
+	int16_t size = 30;
+	uint64_t currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
     uint64_t endTime = currentTime +  5000000ul;
     uint64_t changeTime = currentTime;
+    IBubleSort* pIBubleSort = 0;
+	//pIBubleSort->pVTbl->MyFunction(pIBubleSort, arr_double, size, sizeof(double_t), comparatord);
     g_pIVFB->pVTbl->WriteString(g_pIVFB, 0, 0, 0, 0, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, "2", 1);
     while ( endTime >= currentTime) {
         if (changeTime >= currentTime) {
@@ -109,9 +146,13 @@ void Task2() {
 }
 
 void Task3() {
-    uint64_t currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
-    uint64_t endTime = currentTime +  1000000ul;
+	char_t arr_char[30] = {'J','S','B','9','b','C','Z','c','Z','K','W','D','f','m','U','3','5','a','e','c','Q','q','Y','t','d','7','p','j','g','f'};
+	int16_t size = 30;
+	uint64_t currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
+    uint64_t endTime = currentTime +  5000000ul;
     uint64_t changeTime = currentTime;
+    IBubleSort* pIBubleSort = 0;
+	//pIBubleSort->pVTbl->MyFunction(pIBubleSort, arr_char, size, sizeof(char_t), comparatorc);
     g_pIVFB->pVTbl->WriteString(g_pIVFB, 0, 0, 0, 0, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, "3", 1);
     while ( endTime >= currentTime) {
         if (changeTime >= currentTime) {
@@ -271,13 +312,13 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     pITask1->pVTbl->SetId(pITask2, 2);
     pITask1->pVTbl->SetId(pITask3, 3);
     
-    pITask1->pVTbl->SetPriority(pITask1, 1);
+    pITask1->pVTbl->SetPriority(pITask1, 3);
     pITask1->pVTbl->SetPriority(pITask2, 2);
-    pITask1->pVTbl->SetPriority(pITask3, 3);
+    pITask1->pVTbl->SetPriority(pITask3, 1);
     
-    pITask1->pVTbl->SetDeadline(pITask1, 1);
-    pITask1->pVTbl->SetDeadline(pITask2, 2);
-    pITask1->pVTbl->SetDeadline(pITask3, 3);
+    pITask1->pVTbl->SetDeadline(pITask1, 300);
+    pITask1->pVTbl->SetDeadline(pITask2, 200);
+    pITask1->pVTbl->SetDeadline(pITask3, 100);
 
     // pIPriority->pVTbl->setPr(pITask1->pVTbl->getId(pITask1), 10);
     /* Получение интерфейса для работы с системным таймером */
@@ -350,4 +391,3 @@ Release:
 
     return result;
 }
-

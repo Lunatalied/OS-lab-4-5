@@ -1,0 +1,13 @@
+﻿Build started 3/7/2023 4:43:19 PM.
+     1>Project "C:\Users\lunat\documents\visual studio 2010\Projects\BubleSort\AssemblyFiles\Windows\VisualStudio_10\BubleSortUnitTest.vcxproj" on node 3 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "BubleSortUnitTest\DynamicDebug\BubleSortUnitTest.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\..\..\SharedFiles /I..\..\..\HeaderFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.Core1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.InterfaceBus1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.System1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.MemoryManager1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.FileSystemManagement1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.List1\SharedFiles /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D UGUID_UTILITY /D ECO_WINDOWS /D ECO_WIN32 /D ECO_DLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"BubleSortUnitTest\DynamicDebug\\" /Fd"BubleSortUnitTest\DynamicDebug\vc100.pdb" /Gz /TC /analyze- /errorReport:prompt ..\..\..\UnitTestFiles\SourceFiles\BubleSort.c
+         BubleSort.c
+     1>c:\users\lunat\documents\visual studio 2010\projects\bublesort\unittestfiles\sourcefiles\bublesort.c(27): fatal error C1083: Cannot open include file: 'IEcoCalculatorX.h': No such file or directory
+     1>Done Building Project "C:\Users\lunat\documents\visual studio 2010\Projects\BubleSort\AssemblyFiles\Windows\VisualStudio_10\BubleSortUnitTest.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.95

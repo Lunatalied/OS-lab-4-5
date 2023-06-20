@@ -1,0 +1,16 @@
+﻿Build started 3/7/2023 4:46:03 PM.
+     1>Project "C:\Users\lunat\documents\visual studio 2010\Projects\BubleSort\AssemblyFiles\Windows\VisualStudio_10\BubleSort.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "BubleSort\DynamicDebug\BubleSort.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\..\..\HeaderFiles /I..\..\..\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.Core1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.InterfaceBus1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.System1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.MemoryManager1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.FileSystemManagement1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.List1\SharedFiles /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D ECO_WINDOWS /D ECO_WIN32 /D UGUID_UTILITY /D ECO_DLL /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"BubleSort\DynamicDebug\\" /Fd"BubleSort\DynamicDebug\vc100.pdb" /Gz /TC /analyze- /errorReport:prompt ..\..\..\SourceFiles\CBubleSort.c ..\..\..\SourceFiles\CBubleSortFactory.c
+         CBubleSortFactory.c
+     1>c:\users\lunat\documents\visual studio 2010\projects\bublesort\headerfiles\cbublesort.h(24): fatal error C1083: Cannot open include file: 'IEcoCalculatorX.h': No such file or directory
+         CBubleSort.c
+     1>c:\users\lunat\documents\visual studio 2010\projects\bublesort\headerfiles\cbublesort.h(24): fatal error C1083: Cannot open include file: 'IEcoCalculatorX.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\Users\lunat\documents\visual studio 2010\Projects\BubleSort\AssemblyFiles\Windows\VisualStudio_10\BubleSort.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.94

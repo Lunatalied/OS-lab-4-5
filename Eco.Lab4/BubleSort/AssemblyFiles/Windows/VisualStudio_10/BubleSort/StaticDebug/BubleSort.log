@@ -1,0 +1,30 @@
+﻿Build started 3/18/2023 6:43:12 PM.
+     1>Project "D:\BubleSort\AssemblyFiles\Windows\VisualStudio_10\BubleSort.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "BubleSort\StaticDebug\BubleSort.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I..\..\..\HeaderFiles /I..\..\..\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.Core1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.InterfaceBus1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.System1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.MemoryManager1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.FileSystemManagement1\SharedFiles /ID:\Eco.Framework_20230121\Eco.Framework\Eco.List1\SharedFiles /IC:\Users\lunat\Desktop\001.InsideACOM\Lessons\Lesson02\Eco.CalculatorA\SharedFiles /IC:\Users\lunat\Desktop\001.InsideACOM\Lessons\Lesson03\Eco.CalculatorB\SharedFiles /IC:\Users\lunat\Desktop\001.InsideACOM\Lessons\Lesson06\Eco.CalculatorD\SharedFiles /IC:\Users\lunat\Desktop\001.InsideACOM\Lessons\Lesson07\Eco.CalculatorE\SharedFiles /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D ECO_WINDOWS /D ECO_WIN32 /D UGUID_UTILITY /D ECO_LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"BubleSort\StaticDebug\\" /Fd"BubleSort\StaticDebug\vc100.pdb" /Gz /TC /analyze- /errorReport:prompt ..\..\..\SourceFiles\CBubleSort.c
+         CBubleSort.c
+     1>d:\bublesort\sourcefiles\cbublesort.c(704): warning C4047: 'function' : 'IEcoConnectionPoint *' differs in levels of indirection from 'IEcoConnectionPointVTbl **'
+     1>d:\bublesort\sourcefiles\cbublesort.c(704): warning C4024: 'createCEcoLab1EnumConnectionPoints' : different types for formal and actual parameter 2
+     1>d:\bublesort\sourcefiles\cbublesort.c(739): warning C4047: 'function' : 'IEcoConnectionPoint *' differs in levels of indirection from 'IEcoConnectionPointVTbl **'
+     1>d:\bublesort\sourcefiles\cbublesort.c(739): warning C4024: 'function through pointer' : different types for formal and actual parameter 1
+     1>d:\bublesort\sourcefiles\cbublesort.c(740): warning C4047: '=' : 'IEcoConnectionPoint *' differs in levels of indirection from 'IEcoConnectionPointVTbl **'
+     1>d:\bublesort\sourcefiles\cbublesort.c(773): warning C4047: 'function' : 'IEcoConnectionPointContainer *' differs in levels of indirection from 'IEcoConnectionPointContainerVTbl **'
+     1>d:\bublesort\sourcefiles\cbublesort.c(773): warning C4024: 'createCEcoLab1ConnectionPoint' : different types for formal and actual parameter 2
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppBuild.targets(1151,5): warning MSB8012: TargetPath(D:\BubleSort\AssemblyFiles\Windows\VisualStudio_10\BubleSort\StaticDebug\680786EC2FB742F2A3C6C9D4B4ED74BE.lib) does not match the Library's OutputFile property value (D:\BubleSort\BuildFiles\Windows\x86\StaticDebug\680786EC2FB742F2A3C6C9D4B4ED74BE.lib). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"..\..\..\BuildFiles\Windows\x86\StaticDebug\680786EC2FB742F2A3C6C9D4B4ED74BE.lib" /NOLOGO BubleSort\StaticDebug\CBubleSort.obj
+         BubleSort\StaticDebug\CBubleSortFactory.obj
+         BubleSort\StaticDebug\CEcoLab1ConnectionPoint.obj
+         BubleSort\StaticDebug\CEcoLab1EnumConnectionPoints.obj
+         BubleSort\StaticDebug\CEcoLab1EnumConnections.obj
+         BubleSort.vcxproj -> D:\BubleSort\AssemblyFiles\Windows\VisualStudio_10\BubleSort\StaticDebug\680786EC2FB742F2A3C6C9D4B4ED74BE.lib
+       FinalizeBuildStatus:
+         Deleting file "BubleSort\StaticDebug\BubleSort.unsuccessfulbuild".
+         Touching "BubleSort\StaticDebug\BubleSort.lastbuildstate".
+     1>Done Building Project "D:\BubleSort\AssemblyFiles\Windows\VisualStudio_10\BubleSort.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.48

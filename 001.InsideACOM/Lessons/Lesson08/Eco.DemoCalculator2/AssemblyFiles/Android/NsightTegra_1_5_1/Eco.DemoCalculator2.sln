@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Eco.DemoCalculator2", "Eco.DemoCalculator2.vcxproj", "{97441946-9065-48A1-8D41-2A86583B1C3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Tegra-Android = Debug|Tegra-Android
+		Release|Tegra-Android = Release|Tegra-Android
+		Shipping|Tegra-Android = Shipping|Tegra-Android
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97441946-9065-48A1-8D41-2A86583B1C3D}.Debug|Tegra-Android.ActiveCfg = Debug|Tegra-Android
+		{97441946-9065-48A1-8D41-2A86583B1C3D}.Debug|Tegra-Android.Build.0 = Debug|Tegra-Android
+		{97441946-9065-48A1-8D41-2A86583B1C3D}.Release|Tegra-Android.ActiveCfg = Release|Tegra-Android
+		{97441946-9065-48A1-8D41-2A86583B1C3D}.Release|Tegra-Android.Build.0 = Release|Tegra-Android
+		{97441946-9065-48A1-8D41-2A86583B1C3D}.Shipping|Tegra-Android.ActiveCfg = Shipping|Tegra-Android
+		{97441946-9065-48A1-8D41-2A86583B1C3D}.Shipping|Tegra-Android.Build.0 = Shipping|Tegra-Android
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

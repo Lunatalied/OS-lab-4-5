@@ -466,34 +466,11 @@ int16_t ECOCALLMETHOD CEcoTaskScheduler1Lab_C761620F_Start(/*in*/ IEcoTaskSchedu
         return -1;
     }
 
-    
 
-    /* Запускаем таймер */
-    //pCMe->m_pIArmTimer->pVTbl->Start(pCMe->m_pIArmTimer);
-    //g_pxCurrentTCB_C761620F = (uint64_t*)&pCMe->m_pTaskList[0];
-
-    while (1) {
     for (i = 0; pCMe->m_pTaskList[i].pfunc != 0; i++) {
         remaining_time[i] =  pCMe->m_pTaskList[i].m_pVTblITask->GetDeadline((uint64_t*)&pCMe->m_pTaskList[i]);
         num_tasks++;
     }
-    /* Передаем управление задаче */
-    //while (1) {
-    //    if (g_pxCurrentTCB_C761620F == (uint64_t*)&pCMe->m_pTaskList[g_indx] && pCMe->m_pTaskList[g_indx].pfunc != 0) {
-    //        pCMe->m_pTaskList[g_indx].pfunc();
-    //        g_indx++;
-    //        if (g_indx >= MAX_STATIC_TASK_COUNT) {
-    //            g_indx = 0;
-    //        }
-    //        else if (pCMe->m_pTaskList[g_indx].pfunc == 0) {
-    //            g_indx = 0;
-    //        }
-    //        g_pxCurrentTCB_C761620F = (uint64_t*)&pCMe->m_pTaskList[g_indx];
-    //    }
-    //    else {
-    //        asm volatile ("NOP\n\t" ::: "memory");
-    //    }
-    //}
 
     for (i = 0; i < num_tasks; i++) {
         max_urgency_task = -1;
@@ -515,16 +492,9 @@ int16_t ECOCALLMETHOD CEcoTaskScheduler1Lab_C761620F_Start(/*in*/ IEcoTaskSchedu
 
         g_pxCurrentTCB_C761620F = (uint64_t*)&pCMe->m_pTaskList[max_urgency_task];
         pCMe->m_pTaskList[max_urgency_task].pfunc();
-        //g_indx++;
-        //if (g_indx >= MAX_STATIC_TASK_COUNT) {
-        //    g_indx = 0;
-        //}
-        //else if (pCMe->m_pTaskList[g_indx].pfunc == 0) {
-        //    g_indx = 0;
-        //}
+    
 
         remaining_time[g_indx] = 0;
-    }
     }
     return 0;
 }

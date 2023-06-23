@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="jni">
+      <UniqueIdentifier>7ab52e67-4805-4e2a-b1af-063bd967008d</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>35339061-cd28-4e95-9093-a34f453a6ad5</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res\values">
+      <UniqueIdentifier>5c092256-89ea-4479-bec7-6565f7cb9646</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidBuild Include="AndroidManifest.xml" />
+    <AndroidBuild Include="res\values\strings.xml">
+      <Filter>res\values</Filter>
+    </AndroidBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\SourceFiles\EcoDemoCalculator2.c">
+      <Filter>jni</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SourceFiles\EcoDemoDialogAid.c">
+      <Filter>jni</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

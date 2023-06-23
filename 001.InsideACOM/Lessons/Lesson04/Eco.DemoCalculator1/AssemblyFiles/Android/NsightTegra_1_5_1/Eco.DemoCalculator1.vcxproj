@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="NsightTegraProject">
+    <NsightTegraProjectRevisionNumber>11</NsightTegraProjectRevisionNumber>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Tegra-Android">
+      <Configuration>Debug</Configuration>
+      <Platform>Tegra-Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Tegra-Android">
+      <Configuration>Release</Configuration>
+      <Platform>Tegra-Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|Tegra-Android">
+      <Configuration>Profile</Configuration>
+      <Platform>Tegra-Android</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9442693D-32BA-46C6-8EEE-493D756CAB76}</ProjectGuid>
+    <RootNamespace>Eco.DemoCalculator1</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
+    <AndroidTargetAPI>android-21</AndroidTargetAPI>
+    <AndroidNativeAPI>UseTarget</AndroidNativeAPI>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <AndroidTargetAPI>android-15</AndroidTargetAPI>
+    <AndroidNativeAPI>UseTarget</AndroidNativeAPI>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Profile|Tegra-Android'">
+    <AndroidTargetAPI>android-15</AndroidTargetAPI>
+    <AndroidNativeAPI>UseTarget</AndroidNativeAPI>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
+    <ClCompile>
+      <PreprocessorDefinitions>ECO_LIB;ECO_ANDROID;DISABLE_IMPORTGL</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\HeaderFiles;..\..\..\..\..\Lesson02\Eco.CalculatorA\SharedFiles;..\..\..\..\..\Lesson03\Eco.CalculatorB\SharedFiles;$(ECO_FRAMEWORK)\Eco.Core1\SharedFiles;$(ECO_FRAMEWORK)\Eco.InterfaceBus1\SharedFiles;$(ECO_FRAMEWORK)\Eco.System1\SharedFiles;$(ECO_FRAMEWORK)\Eco.MemoryManager1\SharedFiles;$(ECO_FRAMEWORK)\Eco.FileSystemManagement1\SharedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AndroidSystemLibs>c;m;log;gcc;android;EGL;GLESv1_CM</AndroidSystemLibs>
+      <AdditionalDependencies>00000000000000000000000000000100;0000000000000000000000004D656D31;00000000000000000000000046534D31;00000000000000000000000042757331;4828F6552E4540E78121EBD220DC360E;AE202E543CE54550899603BD70C62565;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\Lesson02\Eco.CalculatorA\BuildFiles\Android\$(ArchAbi)\StaticRelease;..\..\..\..\..\Lesson03\Eco.CalculatorB\BuildFiles\Android\$(ArchAbi)\StaticRelease;$(ECO_FRAMEWORK)\Eco.BIOSExtensions1\BuildFiles\Android\$(ArchAbi)\StaticRelease;$(ECO_FRAMEWORK)\Eco.FileSystemManagement1\BuildFiles\Android\$(ArchAbi)\StaticRelease;$(ECO_FRAMEWORK)\Eco.MemoryManager1\BuildFiles\Android\$(ArchAbi)\StaticRelease;$(ECO_FRAMEWORK)\Eco.InterfaceBus1\BuildFiles\Android\$(ArchAbi)\StaticRelease;$(ECO_FRAMEWORK)\Eco.System1\BuildFiles\Android\$(ArchAbi)\StaticRelease</AdditionalLibraryDirectories>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Link>
+    <AntBuild>
+      <AntBuildPath>$(ProjectDir)\</AntBuildPath>
+    </AntBuild>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <ClCompile>
+      <PreprocessorDefinitions>ECO_LIB;ECO_ANDROID;DISABLE_IMPORTGL</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\HeaderFiles;..\..\..\..\..\Lesson02\Eco.CalculatorA\SharedFiles;..\..\..\..\..\Lesson03\Eco.CalculatorB\SharedFiles;$(ECO_FRAMEWORK)\Eco.Core1\SharedFiles;$(ECO_FRAMEWORK)\Eco.InterfaceBus1\SharedFiles;$(ECO_FRAMEWORK)\Eco.System1\SharedFiles;$(ECO_FRAMEWORK)\Eco.MemoryManager1\SharedFiles;$(ECO_FRAMEWORK)\Eco.FileSystemManagement1\SharedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AndroidSystemLibs>c;m;log;gcc;android;EGL;GLESv1_CM</AndroidSystemLibs>
+      <AdditionalDependencies>00000000000000000000000000000100;0000000000000000000000004D656D31;00000000000000000000000046534D31;00000000000000000000000042757331;AE202E543CE54550899603BD70C62565;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\..\..\Lesson03\Eco.CalculatorB\BuildFiles\Android\$(ArchAbi)\StaticRelease;$(ECO_FRAMEWORK)\Eco.BIOSExtensions1\BuildFiles\Android\$(ArchAbi)\StaticRelease;$(ECO_FRAMEWORK)\Eco.FileSystemManagement1\BuildFiles\Android\$(ArchAbi)\StaticRelease;$(ECO_FRAMEWORK)\Eco.MemoryManager1\BuildFiles\Android\$(ArchAbi)\StaticRelease;$(ECO_FRAMEWORK)\Eco.InterfaceBus1\BuildFiles\Android\$(ArchAbi)\StaticRelease;$(ECO_FRAMEWORK)\Eco.System1\BuildFiles\Android\$(ArchAbi)\StaticRelease</AdditionalLibraryDirectories>
+    </Link>
+    <AntBuild>
+      <AntBuildPath>$(ProjectDir)\</AntBuildPath>
+    </AntBuild>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Tegra-Android'">
+    <ClCompile>
+      <PreprocessorDefinitions>ECO_LIB;ECO_ANDROID;DISABLE_IMPORTGL</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\HeaderFiles;..\..\..\..\..\Lesson02\Eco.CalculatorA\SharedFiles;..\..\..\..\..\Lesson03\Eco.CalculatorB\SharedFiles;$(ECO_FRAMEWORK)\Eco.Core1\SharedFiles;$(ECO_FRAMEWORK)\Eco.InterfaceBus1\SharedFiles;$(ECO_FRAMEWORK)\Eco.System1\SharedFiles;$(ECO_FRAMEWORK)\Eco.MemoryManager1\SharedFiles;$(ECO_FRAMEWORK)\Eco.FileSystemManagement1\SharedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AndroidSystemLibs>c;m;log;gcc;android;EGL;GLESv1_CM</AndroidSystemLibs>
+    </Link>
+    <AntBuild>
+      <AntBuildPath>$(ProjectDir)\</AntBuildPath>
+    </AntBuild>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="res\values\strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidBuild Include="AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </AndroidBuild>
+    <AndroidBuild Include="build.xml" />
+    <AndroidBuild Include="local.properties" />
+    <AndroidBuild Include="proguard.cfg" />
+    <AndroidBuild Include="project.properties" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\SourceFiles\EcoDemoCalculator1.c" />
+    <ClCompile Include="..\..\..\SourceFiles\EcoDemoDialogAid.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

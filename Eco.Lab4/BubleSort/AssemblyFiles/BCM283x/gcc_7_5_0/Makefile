@@ -12,16 +12,25 @@ endif
 
 # include directories
 INC = \
--I ../../../HeaderFiles \
--I ../../../SharedFiles \
--I ../../../../Eco.Core1/SharedFiles \
--I ../../../../Eco.InterfaceBus1/SharedFiles \
--I ../../../../Eco.BIOSExtensions1/SharedFiles \
--I ../../../../Eco.MemoryManager1/SharedFiles
+-I D:\\OS-lab-4-5\\Eco.Lab4\\BubleSort\\HeaderFiles \
+-I D:\\OS-lab-4-5\\Eco.Lab4\\BubleSort\\SharedFiles \
+-I $(ECO_FRAMEWORK)\\Eco.Core1\\SharedFiles \
+-I $(ECO_FRAMEWORK)\\Eco.InterfaceBus1\\SharedFiles \
+-I $(ECO_FRAMEWORK)\\Eco.BIOSExtensions1\\SharedFiles \
+-I $(ECO_FRAMEWORK)\\Eco.MemoryManager1\\SharedFiles \
+-I $(ECO_FRAMEWORK)\\Eco.System1\\SharedFiles \
+-I D:\\OS-lab-4-5\\001.InsideACOM\\Lessons\\Lesson02\\Eco.CalculatorA\\SharedFiles \
+-I D:\\OS-lab-4-5\\001.InsideACOM\\Lessons\\Lesson03\\Eco.CalculatorB\\SharedFiles \
+-I D:\\OS-lab-4-5\\001.InsideACOM\\Lessons\\Lesson06\\Eco.CalculatorD\\SharedFiles \
+-I D:\\OS-lab-4-5\\001.InsideACOM\\Lessons\\Lesson07\\Eco.CalculatorE\\SharedFiles \
+-I $(ECO_FRAMEWORK)\\Eco.List1\\SharedFiles
 
 # source files.
 SRC = \
 ..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)CBubleSort.c \
+..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)CEcoLab1ConnectionPoint.c \
+..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)CEcoLab1EnumConnectionPoints.c \
+..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)CEcoLab1EnumConnections.c \
 ..$(SLASH)..$(SLASH)..$(SLASH)SourceFiles$(SLASH)CBubleSortFactory.c
 
 OBJ = $(SRC:.c=.o)

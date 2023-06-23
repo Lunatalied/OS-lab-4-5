@@ -235,7 +235,7 @@ int16_t ECOCALLMETHOD CBubleSort_B4ED74BE_Fire_OnFinish(/* in */ struct IBubleSo
 void ECOCALLMETHOD CBubleSort_B4ED74BE_MyFunction(/* in */ struct IBubleSort* me, void * first, size_t size, size_t sizeType, int (ECOCDECLMETHOD * comparator ) (const void * , const void * )) {
     CBubleSort_B4ED74BE* pCMe = (CBubleSort_B4ED74BE*)me;
 	size_t i = 0, j = 0, k = 0;
-	byte* arr = (byte*)first;
+	byte_t* arr = (byte_t*)first;
 	void * temp;
 	temp = pCMe->m_pIMem->pVTbl->Alloc(pCMe->m_pIMem, sizeType);
 	

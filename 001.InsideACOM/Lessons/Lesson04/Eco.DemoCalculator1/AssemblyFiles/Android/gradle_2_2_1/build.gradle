@@ -1,0 +1,82 @@
+//import com.android.build.gradle.internal.dsl.ProductFlavor
+
+buildscript {
+	buildDir = "C:\\tmp\\${rootProject.name}"
+    repositories {
+        mavenCentral()
+		jcenter()
+    }
+
+    dependencies {
+    classpath 'com.android.tools.build:gradle:1.5.0'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'c'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        //applicationId "peerf.DemoCalculator1"
+        minSdkVersion 9
+        versionCode 1
+        versionName "1.0"
+		setProperty("archivesBaseName", "DemoCalculator1")
+        ndk {
+		    abiFilters 'arm64-v8a', 'armeabi', 'armeabi-v7a', 'mips', 'mips64', 'x86', 'x86_64'
+            moduleName "DemoCalculator1"
+		    //cFlags "-DECO_LIB -I..\\..\\..\\HeaderFiles" \
+		    cFlags " -I..\\..\\..\\HeaderFiles" \
+			+ " -I..\\..\\..\\..\\..\\Lesson02\\Eco.CalculatorA\\SharedFiles" \
+			+ " -I..\\..\\..\\..\\..\\Lesson03\\Eco.CalculatorB\\SharedFiles" \
+			+ " -I\${ECO_FRAMEWORK}\\Eco.Core1\\SharedFiles" + " -I\${ECO_FRAMEWORK}\\Eco.InterfaceBus1\\SharedFiles" \
+			+ " -I\${ECO_FRAMEWORK}\\Eco.MemoryManager1\\SharedFiles" + " -I\${ECO_FRAMEWORK}\\Eco.System1\\SharedFiles"	
+            ldLibs "GLESv2","log","android","EGL","GLESv1_CM" \
+			+ " \${ECO_FRAMEWORK}\\Eco.System1\\BuildFiles\\Android\\\$(TARGET_ARCH_ABI)\\lib00000000000000000000000000000100.a" 
+			//+ " ..\\..\\..\\..\\..\\Lesson03\\Eco.CalculatorB\\BuildFiles\\Android\\\$(TARGET_ARCH_ABI)\\StaticRelease\\libAE202E543CE54550899603BD70C62565.a"
+
+        }
+
+    }
+
+    sourceSets {
+        main {
+            jni {
+                srcDirs += ["../../../../Eco.DemoCalculator1/SourceFiles"]
+                setIncludes(new HashSet(['EcoDemoCalculator1.c', 'EcoDemoDialogAid.c']))
+            }
+        }
+    }
+	
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+	lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:23.1.1'
+}
+
+def getNdkDir() {
+    if (System.env.ANDROID_NDK_ROOT != null)
+        return System.env.ANDROID_NDK_ROOT
+
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    def ndkdir = properties.getProperty('ndk.dir', null)
+    if (ndkdir == null)
+        throw new GradleException("NDK location not found. Define location with ndk.dir in the local.properties file or with an ANDROID_NDK_ROOT environment variable.")
+
+    return ndkdir
+}

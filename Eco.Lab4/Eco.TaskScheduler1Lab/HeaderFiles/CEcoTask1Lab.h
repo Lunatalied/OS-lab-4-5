@@ -39,7 +39,6 @@ typedef struct CEcoTask1Lab_C761620F {
 
     /* Поля задачи */
     uint16_t id;
-    uint16_t priority;
     uint16_t deadline;
 
 } CEcoTask1Lab_C761620F, *CEcoTask1Lab_C761620F_Ptr;

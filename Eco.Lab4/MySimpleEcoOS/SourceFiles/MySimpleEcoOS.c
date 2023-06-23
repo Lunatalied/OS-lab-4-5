@@ -34,12 +34,7 @@
 #include "IdEcoIPCCMailbox1.h"
 #include "IdEcoVFB1.h"
 #include "IdBubleSort.h"
-
-/*
-#include "IEcoCGI1.h"
-#include "IEcoCGI1VirtualDevice.h"
-#include "IEcoCGI1OneWayOutput.h"
-*/
+#include "IdEcoString1.h"
 
 /* Начало свободного участка памяти */
 extern char_t __heap_start__;
@@ -49,6 +44,11 @@ IEcoVFB1* g_pIVFB = 0;
 IEcoSystemTimer1* g_pISysTimer = 0;
 
 char_t g_strTask[2] = {0};
+
+
+IBubleSort* pIBubleSort = 0;
+IEcoString1* pIEcoString = 0;
+
 
 void TimerHandler(void) {
     if (g_strTask[0] == '\\') {
@@ -82,8 +82,8 @@ void printProgress() {
 }
 
 int ECOCDECLMETHOD comparatori(const void * a, const void * b) { 
-	int16_t data1 = *(int16_t *)a; 
-	int16_t data2 = *(int16_t *)b;
+	int32_t data1 = *(int32_t *)a; 
+	int32_t data2 = *(int32_t *)b;
     if (data1 > data2)
 		return 1;
 	else
@@ -100,8 +100,8 @@ int ECOCDECLMETHOD comparatord(const void * a, const void * b) {
 }
 
 int ECOCDECLMETHOD comparatorc(const void * a, const void * b) { 
-    char data1 = *(char *)a; 
-	char data2 = *(char *)b;
+    char_t data1 = *(char_t *)a; 
+	char_t data2 = *(char_t *)b;
     if (data1 > data2)
 		return 1;
 	else
@@ -109,15 +109,18 @@ int ECOCDECLMETHOD comparatorc(const void * a, const void * b) {
 }
 
 void Task1() {
-	int16_t arr_int[30] = {99, -2, 76, 96, -68, 36, -26, -21, 34, 52, 59, 85, 6, 75, -70, -92, -77, 70, -65, -3, 53, 100, 94, 84, -53, -95, 89, -20, -31, -10};
+	int32_t arr_int[30] = {99, -2, 76, 96, -68, 36, -26, -21, 34, 52, 59, 85, 6, 75, -70, -92, -77, 70, -65, -3, 53, 100, 94, 84, -53, -95, 89, -20, -31, -10};
 	int16_t size = 30;
 	uint64_t currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
     uint64_t endTime = currentTime +  5000000ul;
     uint64_t changeTime = currentTime;
-    IBubleSort* pIBubleSort = 0;
-	
-	//pIBubleSort->pVTbl->MyFunction(pIBubleSort, arr_int, size, sizeof(int16_t), comparatori);
-    g_pIVFB->pVTbl->WriteString(g_pIVFB, 0, 0, 0, 0, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, "1", 1);
+	char_t* char_from_int = 0;
+	int16_t i = 0;
+    
+	g_pIVFB->pVTbl->WriteString(g_pIVFB, 0, 0, 0, 0, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, "1", 1);
+
+	pIBubleSort->pVTbl->MyFunction(pIBubleSort, arr_int, size, sizeof(int32_t), comparatori);
+    
     while ( endTime >= currentTime) {
         if (changeTime >= currentTime) {
             printProgress();
@@ -125,6 +128,11 @@ void Task1() {
         }
         currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
     }
+    
+    for (i = 0; i < size; i++) {
+		char_from_int = pIEcoString->pVTbl->ConvertIntToString(pIEcoString, arr_int[i]);
+		g_pIVFB->pVTbl->WriteString(g_pIVFB, 0, 0, 30, i, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, char_from_int, 3);
+	}
 }
 
 void Task2() {
@@ -133,12 +141,12 @@ void Task2() {
 	uint64_t currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
     uint64_t endTime = currentTime +  5000000ul;
     uint64_t changeTime = currentTime;
-    IBubleSort* pIBubleSort = 0;
-	//pIBubleSort->pVTbl->MyFunction(pIBubleSort, arr_double, size, sizeof(double_t), comparatord);
+
+	pIBubleSort->pVTbl->MyFunction(pIBubleSort, arr_double, size, sizeof(double_t), comparatord);
     g_pIVFB->pVTbl->WriteString(g_pIVFB, 0, 0, 0, 0, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, "2", 1);
     while ( endTime >= currentTime) {
         if (changeTime >= currentTime) {
-            printProgress();
+           printProgress();
             changeTime += 50000ul;
         }
         currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
@@ -146,14 +154,17 @@ void Task2() {
 }
 
 void Task3() {
-	char_t arr_char[30] = {'J','S','B','9','b','C','Z','c','Z','K','W','D','f','m','U','3','5','a','e','c','Q','q','Y','t','d','7','p','j','g','f'};
-	int16_t size = 30;
+	char_t arr_char[60] = {'J','S','B','9','b','C','Z','c','Z','K','W','D','f','m','U','3','5','a','e','c','Q','q','Y','t','d','7','p','j','g','f', 'J','S','B','9','b','C','Z','c','Z','K','W','D','f','m','U','3','5','a','e','c','Q','q','Y','t','d','7','p','j','g','f'};
+	int16_t size = 60;
 	uint64_t currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
     uint64_t endTime = currentTime +  5000000ul;
     uint64_t changeTime = currentTime;
-    IBubleSort* pIBubleSort = 0;
-	//pIBubleSort->pVTbl->MyFunction(pIBubleSort, arr_char, size, sizeof(char_t), comparatorc);
-    g_pIVFB->pVTbl->WriteString(g_pIVFB, 0, 0, 0, 0, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, "3", 1);
+	int16_t i = 0;
+
+	g_pIVFB->pVTbl->WriteString(g_pIVFB, 0, 0, 0, 0, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, "3", 1);
+
+	pIBubleSort->pVTbl->MyFunction(pIBubleSort, arr_char, size, sizeof(char_t), comparatorc);
+	
     while ( endTime >= currentTime) {
         if (changeTime >= currentTime) {
             printProgress();
@@ -161,6 +172,11 @@ void Task3() {
         }
         currentTime = g_pISysTimer->pVTbl->get_SingleTimerCounter(g_pISysTimer);
     }
+
+    for (i = 0; i < size; i++){
+		g_pIVFB->pVTbl->WriteString(g_pIVFB, 0, 0, 20, i, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, arr_char + i, 1);
+	}
+    
 }
 
 /*
@@ -198,16 +214,7 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     /* Указатель на интерфейс для работы c таймером */
     IEcoTimer1* pITimer = 0;
 
-/*
-    IEcoCGI1* pIEcoCGI1 = 0;
-    IEcoCGI1VirtualDevice* pIVD = 0;
-    IEcoCGI1OneWayOutput* pIOutput = 0;
-    ECO_CGI_1_VIEWPORT_POINT_t corner1 = {0};
-    ECO_CGI_1_VIEWPORT_POINT_t corner2 = {0};
-    ECO_CGI_1_POINT_t point1 = {0};
-    ECO_CGI_1_POINT_t line[5] = { {10,10}, {100,100}, {50, 100}, {50,10}, {10,10}};
-    ECO_CGI_1_POINT_LIST_t lineList = {5, line};
-*/
+	
     char_t* strHello = "Hello, World!";
     uint16_t offset = 0;
     uint16_t x1 = 0;
@@ -261,17 +268,25 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     /* Выделение области памяти 512 КБ */
     pIMemMgr->pVTbl->Init(pIMemMgr, &__heap_start__, 0x080000);
 
-    /* Получение интерфейса для работы с виртуальной памятью */
-    //result = pIMemMgr->pVTbl->QueryInterface(pIMemMgr, &IID_IEcoVirtualMemory1, (void**)&pIVrtMem);
-    //if (result == 0 && pIVrtMem != 0) {
-        /* Инициализация виртуальной памяти */
-     //   result = pIVrtMem->pVTbl->Init(pIVrtMem);
-        /* TO DO */
-   // }
+    
     /* Регистрация статического компонента для работы с планировщиком */
     result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoTaskScheduler1Lab, (IEcoUnknown*)GetIEcoComponentFactoryPtr_902ABA722D34417BB714322CC761620F);
     /* Проверка */
     if (result != 0) {
+        /* Освобождение в случае ошибки */
+        goto Release;
+    }
+
+	/* Регистрация статического компонента для Bubble sort */
+    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_BubleSort, (IEcoUnknown*)GetIEcoComponentFactoryPtr_680786EC2FB742F2A3C6C9D4B4ED74BE);
+    if (result != 0 ) {
+        /* Освобождение в случае ошибки */
+        goto Release;
+    }
+
+	/* Регистрация статического компонента для IEcoString */
+    result = pIBus->pVTbl->RegisterComponent(pIBus, &CID_EcoString1, (IEcoUnknown*)GetIEcoComponentFactoryPtr_84CC0A7DBABD44EEBE749C9A8312D37E);
+    if (result != 0 ) {
         /* Освобождение в случае ошибки */
         goto Release;
     }
@@ -300,6 +315,20 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
         goto Release;
     }
 
+	/* Получение интерфейса для BubbleSort */
+    result = pIBus->pVTbl->QueryComponent(pIBus, &CID_BubleSort, 0, &IID_IBubleSort, (void**) &pIBubleSort);
+    if (result != 0 || pIBubleSort == 0) {
+        /* Освобождение интерфейсов в случае ошибки */
+        goto Release;
+    }
+
+	/* Получение интерфейса для IEcoString */
+    result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoString1, 0, &IID_IEcoString1, (void**) &pIEcoString);
+    if (result != 0 || pIEcoString == 0) {
+        /* Освобождение интерфейсов в случае ошибки */
+        goto Release;
+    }
+
     /* Инициализация */
     pIScheduler->pVTbl->InitWith(pIScheduler, pIBus, &__heap_start__+0x090000, 0x080000);
 
@@ -312,15 +341,10 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     pITask1->pVTbl->SetId(pITask2, 2);
     pITask1->pVTbl->SetId(pITask3, 3);
     
-    pITask1->pVTbl->SetPriority(pITask1, 3);
-    pITask1->pVTbl->SetPriority(pITask2, 2);
-    pITask1->pVTbl->SetPriority(pITask3, 1);
-    
     pITask1->pVTbl->SetDeadline(pITask1, 300);
     pITask1->pVTbl->SetDeadline(pITask2, 200);
     pITask1->pVTbl->SetDeadline(pITask3, 100);
 
-    // pIPriority->pVTbl->setPr(pITask1->pVTbl->getId(pITask1), 10);
     /* Получение интерфейса для работы с системным таймером */
     result = pIBus->pVTbl->QueryComponent(pIBus, &CID_EcoTimer1, 0, &IID_IEcoSystemTimer1, (void**) &pISysTimer);
     /* Проверка */
@@ -358,8 +382,8 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
     }
 
     /* Вывод 4 строки "Привет Мир!" */
-    pIVFB->pVTbl->WriteString(pIVFB, 0, 0, 4, 4, CHARACTER_ATTRIBUTE_FORE_COLOR_GREEN, "\xcf\xf0\xe8\xe2\xe5\xf2\x20\xcc\xe8\xf0\x21", 11);
-    pIVFB->pVTbl->WriteString(pIVFB, 0, 0, 4, 5, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, strHello, 13);
+    //pIVFB->pVTbl->WriteString(pIVFB, 0, 0, 4, 4, CHARACTER_ATTRIBUTE_FORE_COLOR_GREEN, "\xcf\xf0\xe8\xe2\xe5\xf2\x20\xcc\xe8\xf0\x21", 11);
+    //pIVFB->pVTbl->WriteString(pIVFB, 0, 0, 4, 5, CHARACTER_ATTRIBUTE_FORE_COLOR_WHITTE, strHello, 13);
     g_pIVFB = pIVFB;
     pIScheduler->pVTbl->Start(pIScheduler);
 

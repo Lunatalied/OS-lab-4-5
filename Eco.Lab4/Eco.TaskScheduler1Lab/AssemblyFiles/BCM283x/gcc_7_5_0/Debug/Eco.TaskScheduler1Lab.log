@@ -1,20 +1,21 @@
-﻿Build started 6/20/2023 8:24:01 PM.
+﻿Build started 6/23/2023 10:01:27 PM.
      1>Project "D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\AssemblyFiles\BCM283x\gcc_7_5_0\Eco.TaskScheduler1Lab.vcxproj" on node 2 (build target(s)).
      1>Build:
          make
+         D:\lab4_materials\toolchain/gcc-linaro-7.5.0/bin/aarch64-elf-gcc -I ../../../HeaderFiles -I ../../../SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework/Eco.Core1/SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework/Eco.InterfaceBus1/SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework/Eco.Timer1/SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework/Eco.MemoryManager1/SharedFiles -Wall -std=gnu89 -Wno-missing-braces -march=armv8-a+simd -mtune=cortex-a53 -mstrict-align -fno-tree-loop-vectorize -fno-tree-slp-vectorize -DECO_BCM283X -DECO_LIB -DUGUID_UTILITY -c ..\\..\\..\\SourceFiles\\CEcoTask1Lab.c -o ..\\..\\..\\SourceFiles\\CEcoTask1Lab.o
          D:\lab4_materials\toolchain/gcc-linaro-7.5.0/bin/aarch64-elf-gcc -I ../../../HeaderFiles -I ../../../SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework/Eco.Core1/SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework/Eco.InterfaceBus1/SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework/Eco.Timer1/SharedFiles -I D:\lab4_materials\Eco.Framework_20230409\Eco.Framework/Eco.MemoryManager1/SharedFiles -Wall -std=gnu89 -Wno-missing-braces -march=armv8-a+simd -mtune=cortex-a53 -mstrict-align -fno-tree-loop-vectorize -fno-tree-slp-vectorize -DECO_BCM283X -DECO_LIB -DUGUID_UTILITY -c ..\\..\\..\\SourceFiles\\CEcoTaskScheduler1Lab.c -o ..\\..\\..\\SourceFiles\\CEcoTaskScheduler1Lab.o
          ..\..\..\SourceFiles\CEcoTaskScheduler1Lab.c: In function 'CEcoTaskScheduler1Lab_C761620F_NewTask':
          ..\..\..\SourceFiles\CEcoTaskScheduler1Lab.c:321:26: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
                       pxTopOfStack = g_xCEcoTask1List_C761620F[indx].m_sp;
                                    ^
          ..\..\..\SourceFiles\CEcoTaskScheduler1Lab.c: In function 'CEcoTaskScheduler1Lab_C761620F_Start':
-         ..\..\..\SourceFiles\CEcoTaskScheduler1Lab.c:477:77: warning: passing argument 1 of '(pCMe->m_pTaskList + (sizetype)((long unsigned int)i * 40))->m_pVTblITask->GetDeadline' from incompatible pointer type [-Wincompatible-pointer-types]
+         ..\..\..\SourceFiles\CEcoTaskScheduler1Lab.c:471:77: warning: passing argument 1 of '(pCMe->m_pTaskList + (sizetype)((long unsigned int)i * 40))->m_pVTblITask->GetDeadline' from incompatible pointer type [-Wincompatible-pointer-types]
                   remaining_time[i] =  pCMe->m_pTaskList[i].m_pVTblITask->GetDeadline((uint64_t*)&pCMe->m_pTaskList[i]);
                                                                                       ^
-         ..\..\..\SourceFiles\CEcoTaskScheduler1Lab.c:477:77: note: expected 'IEcoTask1Ptr_t {aka struct IEcoTask1 *}' but argument is of type 'uint64_t * {aka long unsigned int *}'
+         ..\..\..\SourceFiles\CEcoTaskScheduler1Lab.c:471:77: note: expected 'IEcoTask1Ptr_t {aka struct IEcoTask1 *}' but argument is of type 'uint64_t * {aka long unsigned int *}'
          D:\lab4_materials\toolchain/gcc-linaro-7.5.0/bin/aarch64-elf-ar -rcs ..\\..\\..\\BuildFiles\\BCM283x\\arm64-v8a\\StaticRelease\\lib902ABA722D34417BB714322CC761620F.a ..\\..\\..\\SourceFiles\\CEcoTask1Lab.o ..\\..\\..\\SourceFiles\\CEcoTaskScheduler1Lab.o ..\\..\\..\\SourceFiles\\CEcoTaskScheduler1LabFactory.o
      1>Done Building Project "D:\OS-lab-4-5\Eco.Lab4\Eco.TaskScheduler1Lab\AssemblyFiles\BCM283x\gcc_7_5_0\Eco.TaskScheduler1Lab.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.36
+Time Elapsed 00:00:00.64
